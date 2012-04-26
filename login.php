@@ -11,6 +11,7 @@ include 'includes/header_logout.php';
 
 ?>
 
+<div id="pagina-login">
 això si
 addthis
 
