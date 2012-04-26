@@ -12,6 +12,7 @@ include 'includes/header_logout.php';
 ?>
 
 <div id="pagina-login">
+addthis
 
 	<div class="login">
 	<h2>Login</h2>
