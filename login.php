@@ -12,7 +12,11 @@ include 'includes/header_logout.php';
 ?>
 
 <div id="pagina-login">
+<<<<<<< HEAD
 això si
+=======
+addthis
+>>>>>>> olive
 
 	<div class="login">
 	<h2>Login</h2>
