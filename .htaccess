@@ -1,0 +1,12 @@
+ErrorDocument 404 /404.php
+
+RewriteEngine on
+
+RewriteRule ^projectes/([a-z0-9_-]+)/$ projectes.php?id=$1
+RewriteRule ^tasques/([a-z0-9_-]+)/$ tasques.php?id=$1
+
+RewriteRule ^([a-z0-9_-]+)/$ $1.php
+RewriteRule ^([a-z0-9_-]+)$ $1.php
+
+RewriteRule ^(.+)/([a-z0-9_-]+)$ /$1/$2/ [R=404,L,DP,QSA]
+RewriteRule ^([a-z0-9_-]+)$ /$1/ [R=404,L,DP,QSA]

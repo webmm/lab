@@ -1,0 +1,16 @@
+classes
+	Usuari - OK
+	Fitxer - 
+	Calendari - 
+
+	Projecte - 
+	LlistaTasques - 
+	Tasca - 
+
+
+TODO
+	Pàgina password recover (no està fet perquè des de localhost no es poden enviar emails)
+
+altres coses a afegir
+	addthis
+	gestor de fitxers pujats

@@ -1,0 +1,275 @@
+<html><head>
+    <meta charset="utf-8">
+
+    <title>Manual de la pàgina web "La Barretina"</title>
+
+      <style>
+
+        html { overflow: hidden; }
+        body, html { height: 100%; padding: 0px; }
+        body { margin: auto; position: relative; }
+        img, video { vertical-align: middle; }
+        /* FIXME : Mandatory for flex box model, Firefox bug */
+        /* See JS hack */
+        section > div { width: 100%; display: -moz-box; -moz-box-orient : vertical; -moz-box-pack : center; -moz-box-align : center; }
+        section > div { width: 100%; display: -webkit-box; -webkit-box-orient : vertical; -webkit-box-pack : center; -webkit-box-align : center; }
+        footer { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; position: absolute; bottom: 0; padding: 1em; width: 100%; }
+        .flex-wrapper { display: -moz-box; display: -webkit-box; -moz-box-orient: horizontal; -webkit-box-orient: horizontal; width: 100%; }
+        footer .flex-space { -moz-box-flex: 1; -webkit-box-flex: 1; }
+        section { -moz-transition-property: -moz-transform, opacity; -moz-transition-duration: 1s, 1s; pointer-events: none; display: block; width: 100%; margin: auto; position: absolute; padding: 0 10px; opacity: 0; -moz-box-sizing: border-box; }
+        section { -webkit-transition-property: -webkit-transform, opacity; -webkit-transition-duration: 1s, 1s; pointer-events: none; -webkit-box-sizing: border-box; }
+        section h1, section h2, section h3, section p { text-align: center; margin: .3em; margin: 0; padding: 0; }
+        section[aria-selected] { opacity: 1; pointer-events: auto; -moz-transition-delay: 1s, 1s; -webkit-transition-delay: 1s, 1s; }
+        pre { font-size: 35px; border-left: 6px solid white; padding-left: 10px; white-space: pre-wrap;       /* css-3 */ word-wrap: break-word;       /* Internet Explorer 5.5+ */ line-height: 1.3em; } 
+        a { color: white!important; text-decoration: none; }
+
+        @font-face  {
+          /* Uncomment and add your own font file
+          font-family: fface;
+          src: url(myfont.ttf);
+          */
+        }
+
+        /* The backgrounds of all your slides */
+        body {
+
+          background-image: -moz-radial-gradient( 50% 30% 90deg, circle, #f8f8f8 0%, #f8f8f8 600px);
+          background-image: -webkit-gradient(radial, 50% 30%, 0, 50% 30%, 600, from(#f8f8f8), to(#f8f8f8));
+          background-color: #f8f8f8;
+        }
+
+        /* This is the style of a slide */
+        section {
+          font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+          font-weight: bold;
+          font-size: 20px;
+          text-shadow: 0px 0px 0px #ccc;
+          color: black;
+          /*
+          Your own font?
+          font-family: fface;
+          */
+        }
+
+        /* "DIAPO ANTERIOR" ******************************/
+        section {
+
+          /* The sliding effect */
+          -moz-transform: translate(-100%, 0);
+          -webkit-transform: translate(-100%, 0);
+
+          /* The rotating effect
+          -moz-transform: scale(0.3) rotate(180deg);
+          -webkit-transform: scale(0.3) rotate(180deg);
+          */
+
+          /* The nothing effect */
+          /* Well, just comment out the rotating and sliding effect*/
+
+        }
+
+        /* The footer with the title + the current slide number */
+        #footer {
+          display: block;
+          color: white;
+          opacity: 0.5;
+
+          /*
+          display: none;
+          */
+        }
+
+
+        /* "PRESENT" ****************************/
+        /* Current slide */
+        section[aria-selected] {
+          -moz-transform: scale(1.0) translate(0, 0);
+          -webkit-transform: scale(1.0) translate(0, 0);
+        }
+
+        /* "FUTURE" *****************************/
+        /* Selector not yet supported by Webkit :( */
+        section[aria-selected] ~ section {
+
+          /* The sliding effect */
+          -moz-transform: translate(100%, 0);
+          -webkit-transform: translate(100%, 0);
+
+          /* The rotating effect
+          -moz-transform: scale(5) rotate(-180deg);
+          -webkit-transform: scale(5) rotate(-180deg);*/
+          
+
+          /* The nothing effect */
+          /* Well, just comment the rotating and sliding effect*/
+
+
+        }
+
+      </style>
+    <link type="text/css" rel="stylesheet" href="data:text/css,"><style id="resizeStyle">body>section>div {height: 462px}</style></head>
+
+        <!--Diapositiva 1-->
+
+      <body><section aria-selected="true"><div>
+        <h1>Mou les fletxes del teclat per avançar o retrocedir.</h1>
+      </div></section>
+
+		<!--Diapositiva 2-->
+
+      <section><div>
+        <h1>Aquest és el menú principal de la nostre aplicació. La podeu trobar a la part esquerre de la pantalla.<br><br>
+			<img src="../img/1.jpg"></h1>
+      </div></section>
+
+		<!--Diapositiva 3-->
+
+      <section><div>
+        <h1> La primera pàgina que trobareu serà la de "Inici". Des d'aqui, podreu veure totes les tasques i projectes disponibles. D'altre banda, podreu accedir al manual.
+	
+			<br><br><img src="../img/2.jpg"></h1>
+       
+      </div></section>
+
+		<!--Diapositiva 4-->
+
+      <section><div>
+        <h1> Si premeu afegir tasca, a l'apartat de dalt, us sortirà la següent pàgina: 
+
+			<br><br><img src="../img/3.jpg"></h1> <br><br>
+			
+      </div></section>
+
+		<!--Diapositiva 5-->
+		
+      <section><div>
+        <h1>			Haureu d'afegir la descripció de la tasca, a quin projecte està, quí és el responsable, la data d'entrega, la localització (On quedarà reflectit al mapa) i per finalitzar, es podrà adjuntar un fitxer simplement arrosegant-lo cap al cercle que veureu en pantalla.
+         <br><br><img src="../img/4.jpg"></h1>
+      </div></section>
+
+  		<!--Diapositiva 6-->   
+ 
+          <section><div>
+        <h1> Si anem a la pàgina "Tasques", el que ens trobarem serà una pàgina similar a la d'Inici. Podrem veure les tasques disponibles, crear-ne de noves i/o eliminar-les.
+	
+	<br><br><img src="../img/5.jpg"></h1>  
+       
+      </div></section>
+
+			<!--Diapositiva 7-->
+      
+       <section><div>
+
+            <h1> Si anem a la pàgina "Calendari", podrem veure totes les tasques que hem de fer. D'aquesta manera, serà més fàcil organitzar-nos. I podrem accedir clickant a sobre de cada tasca.
+
+		<br><br><img src="../img/6.jpg"></h1>
+      </div></section>
+
+		<!--Diapositiva 8-->      
+		
+       <section><div>
+	
+		<h1> A la pàgina de projectes, podreu veure els projectes existens i/o crear-ne de nous. Per crear-ne un de nou, haureu de prémer "Afegir projecte".
+        <br><br><img src="../img/8.jpg"></h1>
+      </div></section>
+
+
+  		<!--Diapositiva 9-->   
+
+      <section><div>
+			<h1> La pestanya d'afegir projectes és simple. Per afegir-ne un de nou, simplement heu d'omplir el nom del projecte i posar algún comentari</h1>
+        <br><br><img src="../img/7.jpg">
+      </div></section>
+
+
+    <script>
+
+      function init() {
+        var firstFrame = window.location.hash? parseInt(window.location.hash.split("#")[1], 10) : 1;
+        var title = document.querySelector("title").textContent;
+        var slides = document.querySelectorAll("body > section");
+        for (var i = 1, il = slides.length; i <= il; i++) {
+          // FIXME : Mandatory for flex box model for vertical align
+          // Firefox bug :(
+          slides[i - 1].innerHTML = "<div>" + slides[i - 1].innerHTML + "</div>";
+          window.history[(i == 1? 'replace' : 'push') + 'State'](i, title + " ("+ i +"/"+ il +")", "#"+i);
+        }
+
+        var footer = document.createElement("footer");
+        footer.id = "footer";
+        footer.innerHTML = 
+          '<div class="flex-wrapper"><p>' + title + '</p>' +
+          '<p class="flex-space"></p>' + 
+          '<p id="index"><span class="pagenumber"></span> / ' + il +'</p>';
+        document.body.appendChild(footer);
+        history.go(- slides.length + firstFrame);
+
+
+        window.addEventListener("popstate", function(e) {
+          if(e.state) {
+            var old = document.querySelector("section[aria-selected]");
+            var next = document.querySelector("section:nth-of-type("+ e.state +")");
+
+            if (old) {
+              old.removeAttribute("aria-selected");
+              if (old.hasAttribute("data-onunload")) {
+                window[old.getAttribute("data-onunload")].call(window, old);
+              }
+            }
+
+            if (next) {
+              next.setAttribute("aria-selected", "true");
+              if (next.hasAttribute("data-onload")) {
+                window[next.getAttribute("data-onload")].call(window, next);
+              }
+            }
+
+
+            var index = document.querySelector("#index .pagenumber");
+            index.innerHTML = e.state;
+          }
+        }, true); 
+      }
+
+      function resize() {
+        var style = document.getElementById("resizeStyle");
+        if (!style) {
+          style = document.createElement("style");
+          style.id = "resizeStyle";
+          document.head.appendChild(style);
+        }
+        style.textContent = "body>section>div {height: "+ window.innerHeight +"px}";
+      }
+
+      window.addEventListener("resize", resize, true);
+      window.addEventListener("load", resize, true);
+      window.addEventListener("load", init, true);
+
+      // Webkit bug
+      // window.addEventListener("hashchange", init, true); // FIXME Webkit fires hashchange when it shouldn't
+      window.addEventListener("keydown", function(e) {
+        // Don't intercept keyboard shortcuts
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+          return;
+        }
+        if (   e.keyCode == 80 // p
+            || e.keyCode == 66 // b
+            || e.keyCode == 37 // left arrow
+            || e.keyCode == 33 // page up
+        ) {
+          e.preventDefault();
+          history.back();
+        }
+        if (   e.keyCode == 78 // n
+            || e.keyCode == 32 // space
+            || e.keyCode == 39 // right arrow
+            || e.keyCode == 34 // page down
+        ) {
+          e.preventDefault();
+          history.forward();
+        }
+      }, true);
+    </script>
+  
+
+<footer id="footer"><div class="flex-wrapper"><p></p><p class="flex-space"></p><p id="index"><span class="pagenumber">1</span> / 9</p></div></footer></body></html>
