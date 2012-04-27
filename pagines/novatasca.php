@@ -15,18 +15,31 @@ include $_SERVER['DOCUMENT_ROOT'].'/includes/init.php';
 					foreach ($projectes as $projecte) {
 						echo '<option value="'.$projecte->pid.'">'.$projecte->nom.'</option>';
 					}
+				?>
+					
+			</select>
+			
+			<select name="responsable" id="responsable">
+				<?php 
+					$usuaris = Usuari::getList();
+					foreach ($usuaris as $usuari) {
+						echo '<option value="'.$usuari->id.'">'.$usuari->nom.'</option>';
+					}
 				?>	
 			</select>
+			<!--  
 	
 			<select name="responsable" id="responsable">
 				<option value="0">Responsable 0</option>
 				<option value="1">Responsable 1</option>
 				<option value="2">Responsable 2</option>
 				<option value="3">Responsable 3</option>
-			</select>
+			</select>-->
 	
 			<input type="text" name="data" placeholder="Data entrega" id="data">
-
+			
+			<textarea placeholder="Comentari..." name="text" id="text"></textarea>
+			
 			<input id="address" name="loc" type="text" value="" placeholder="Localització...">
 			<input id="novatasca-coord" name="coor" type="text" value="" readonly="readonly">
 			<input type="button" value="Mostrar al mapa" onclick="codeAddress()">

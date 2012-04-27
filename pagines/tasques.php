@@ -7,23 +7,27 @@
 				echo '<li><a href="/tasques/'.$tasca->pid.'/"><span>'.$tasca->nom.'</span></a></li>';
 			}
 		?>	
+		
 </ul>
+
 <?php else: ?>
 <?php $tasca = Tasca::getFromPid($_GET['id']) ?>
-<?php print_r($tasca) ?>
+<?php $usuaris = Usuari::get(Usuari::entrat()) ?>
+
+<div class="pato">
 	<div class="pagina-tasca">
 	
 		<div class="tasca-capcalera">
-			<label><input type="checkbox"><?php echo $tasca->nom ?></label>
-			<a href="/tasques/">Tornar a la llista de tasques</a>
+			<!--<label><input type="checkbox"><?php echo $tasca->nom ?></label>
+			<a href="/tasques/" class="afegir afegir-tasca li-btn">Tornar a la llista de tasques</a>-->
+			
 		</div>
 	
 		<dl class="tasca-meta">
-			<dt>Creada:</dt>
-			<dd><?php echo $tasca->data ?> per <a href="#"><?php echo $tasca->id_usuari ?></a></dd>
+			<dt>Creada: <?php echo $tasca->data ?> per <a href="/perfil/"><?php echo $usuaris->nom ?></a></dt>
+			
 		
-			<dt>Projecte</dt>
-			<dd><?php echo $tasca->id_projecte ?></dd>
+			<dt>Projecte: <?php echo $tasca->id_projecte ?></dt>
 		
 			<dt>Data límit</dt>
 			<dd>15/02</dd>
@@ -63,8 +67,19 @@
 
 				<p><input type="submit" value="Continue &rarr;"></p>
 			</form>
+			
+			
+		</div>
+		<div class="tasca-eliminar">
+			
+				<a href="/tasques/" class="btn">Tornar a tasques</a><a href="/elimina/?pid=<?php echo $tasca->pid ?>" class="delete btn">Elimina</a>
+			
+		</div>
+		
+		<div class="tornar">
 		
 		</div>
 	
+	</div>
 	</div>
 <?php endif ?>
