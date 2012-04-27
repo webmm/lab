@@ -44,6 +44,11 @@ class Tasca{
 		$nom = General::cleantext($n);
 		mysql_query("UPDATE tasques SET nom = '$nom' WHERE id = '$id'");
 	}
+	
+	public function delete($pid) {
+		
+		mysql_query("DELETE from tasques WHERE pid = '$pid'");
+	}
 
 	public function get($id) {
 		$sql = mysql_query("SELECT * FROM tasques WHERE id = '$id'");
