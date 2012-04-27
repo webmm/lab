@@ -3,7 +3,13 @@
 
 classes/class.mysql.php
 
+<<<<<<< HEAD
 pagines/error_log
+=======
+ajax/error_log
+
+error_log
+>>>>>>> olive
 
 labarretina.sql
 

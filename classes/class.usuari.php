@@ -335,6 +335,12 @@ class Usuari{
 	public function getFromEmail($email){
 		$sql = mysql_query("SELECT * FROM usuaris WHERE email = '$email'") or die(mysql_error());
 		return mysql_fetch_object($sql);
+	public function getList() {
+		$sql = mysql_query("SELECT * FROM usuaris");
+		while($row = mysql_fetch_object($sql)) {
+			$resultat[] = $row;
+		}
+		return $resultat;
 	}
 
 }
