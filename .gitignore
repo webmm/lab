@@ -2,3 +2,9 @@
 .DS_Store
 
 classes/class.mysql.php
+
+pagines/error_log
+
+labarretina.sql
+
+lb_labarretina.sql
