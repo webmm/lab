@@ -12,11 +12,6 @@ include 'includes/header_logout.php';
 ?>
 
 <div id="pagina-login">
-<<<<<<< HEAD
-això si
-addthis
-=======
->>>>>>> olive
 
 	<div class="login">
 	<h2>Login</h2>
@@ -62,10 +57,12 @@ addthis
 		<div class="clearfix">
 		<label for="pass1">Contrasenya</label>
 		<input type="password" name="pass" id="pass">
+		</div>
 		
 		<div class="clearfix">
 		<label for="pass2">Confirmar la contrasenya</label>
 		<input type="password" name="pass2" id="pass2">
+		</div>
 	
 		<input type="submit" value="Registrar-me" name="register" class="btn btn-primary">
 	</form>
@@ -73,10 +70,6 @@ addthis
 	</div>
 
 </div>
-
-</form>
-
-<?php include 'includes/footer_logout.php'; ?>
 
 <div class="Social">
 
@@ -91,3 +84,6 @@ addthis
 	<!-- AddThis Button END -->
 
 </div>
+
+
+<?php include 'includes/footer_logout.php'; ?>

@@ -34,6 +34,17 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 	
+	$( ".llistaitems li a" ).draggable({ revert: true });
+	$("#sidebar-llistaprojectes li").droppable({
+		activeClass: "ui-state-hover",
+		hoverClass: "ui-state-active",
+		tolerance: "pointer",
+		drop: function( event, ui ) {
+			var link = $(this).find("a");
+			alert(link.attr("title"));
+		}
+	});
+	
 	$(".nouprojecte-tancar").live("click", function(e) {
 		tancarNouProjecte();
 		e.preventDefault();

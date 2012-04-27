@@ -12,7 +12,7 @@
 		<?php 
 			$tasques = Tasca::getListAll();
 			foreach ($tasques as $tasca) {
-				echo '<li><a href="/tasques/'.$tasca->pid.'/"><span>'.$tasca->nom.'</span></a></li>';
+				echo '<li><a href="/tasques/'.$tasca->pid.'/" title="'.$tasca->pid.'"><span>'.$tasca->nom.'</span></a></li>';
 			}
 		?>	
 </ul>
