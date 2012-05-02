@@ -1,13 +1,6 @@
 <?php if (!isset($_GET['id'])): ?>
-<ul class="llistaitems">
-		<li><a href="#" class="afegir afegir-tasca li-btn">+ Afegir tasca</a></li>
-		<?php 
-			$tasques = Tasca::getListAll();
-			foreach ($tasques as $tasca) {
-				echo '<li><a href="/tasques/'.$tasca->pid.'/"><span>'.$tasca->nom.'</span></a></li>';
-			}
-		?>	
-		
+<ul class="llistaitems tasques">
+		<?php include("ajax/llistaTasquesGeneral.php"); ?>
 </ul>
 
 <?php else: ?>

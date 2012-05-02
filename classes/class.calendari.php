@@ -16,7 +16,7 @@ class Calendari{
 	  /* days and weeks vars now ... */
 	  $running_day = date('N',mktime(0,0,0,$month,1,$year));
 	  $days_in_month = date('t',mktime(0,0,0,$month,1,$year));
-	  $days_in_this_week = 1;
+	  $days_in_this_week = 0;
 	  $day_counter = 0;
 	  $dates_array = array();
 
@@ -36,22 +36,35 @@ class Calendari{
 	      $calendar.= '<div class="data">'.$list_day.'</div>';
 
 	      /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-	      $calendar.= str_repeat('<p></p>',2);
+			$tasques = Tasca::getListDia($list_day,$month,$year);
+			if($tasques) {
+				$calendar.= "<ul>";
+				foreach ($tasques as $tasca) {
+					$calendar.= "<li><a href='/tasques/$tasca->pid/'>$tasca->nom</a></li>";
+				}
+				$calendar.= "</ul>";
+			} else {
+				$calendar.= str_repeat('<p></p>',2);
+			}
+	      
 
 	    $calendar.= '</td>';
 	    if($running_day == 7):
 	      $calendar.= '</tr>';
+	$running_day = 0;
 	      if(($day_counter+1) != $days_in_month):
 	        $calendar.= '<tr class="calendar-row">';
+		  else:
+			$running_day--;
 	      endif;
-	      $running_day = 0;
+	      
 	      $days_in_this_week = 0;
 	    endif;
 	    $days_in_this_week++; $running_day++; $day_counter++;
 	  endfor;
 
 	  /* finish the rest of the days in the week */
-	  if($days_in_this_week < 8):
+	  if(($days_in_this_week < 8)&&$running_day != 0):
 	    for($x = 1; $x <= (8 - $days_in_this_week); $x++):
 	      $calendar.= '<td class="calendar-day-np">&nbsp;</td>';
 	    endfor;

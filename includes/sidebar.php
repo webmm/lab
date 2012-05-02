@@ -15,7 +15,7 @@
 		<?php 
 			$projectes = Projecte::getList();
 			foreach ($projectes as $projecte) {
-				echo '<li><a href="/projectes/'.$projecte->pid.'/" id="sidebar-projecte5"><span>'.$projecte->nom.'</span></a></li>';
+				echo '<li><a href="/projectes/'.$projecte->pid.'/" data-id="'.$projecte->pid.'"><span>'.$projecte->nom.'</span></a></li>';
 			}
 		?>		
 	</ul>

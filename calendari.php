@@ -1,5 +1,6 @@
 <?php include 'includes/init.php'; ?>
 <?php include 'includes/header.php'; ?>
+<?php include 'includes/header-calendari.php'; ?>
 <div class="wrapper">
 	<?php include 'includes/sidebar.php'; ?>
 

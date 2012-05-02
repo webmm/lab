@@ -11,13 +11,59 @@ $(document).ready(function() {
 	/* pàgina calendari */
 	
 	if(paginaactual=='calendari') {
-		midaCalendari();
 		
-		$("#calendari").fadeIn("slow");
+		currentAnchor = document.location.hash;  
+        var splits = currentAnchor.substring(1).split('/');
+		var mes = splits[1];
+		var any = splits[2];
+		
+		if(!mes) mes = (new Date).getMonth() + 1;
+		if(!any) any = (new Date).getFullYear();
+		
+		carregarCalendari(mes,any);
+		
+		$(".next-month").click(function(e) {
+			e.preventDefault();
+			if(mes!=12) mes++;
+			else {
+				mes = 1;
+				any++;
+			}
+			carregarCalendari(mes,any);
+		});
+		
+		$(".prev-month").click(function(e) {
+			e.preventDefault();
+			if(mes!=1) mes--;
+			else {
+				mes = 12;
+				any--;
+			}
+			carregarCalendari(mes,any);
+		});
 
 		$(window).resize(function(){
-	        midaCalendari();
+	        midaCalendari(any,mes);
 	    });
+	}
+	
+	function carregarCalendari(mes,any) {
+		location.hash = "#/"+mes+"/"+any+"/";
+		var monthNames = [ "Gener", "Febrer", "Març", "Abril", "Maig", "Juny",
+		    "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre" ];
+		
+		$.ajax({
+			type: 'POST',
+			url: "/ajax/calendari.php",
+			data: "mes="+mes+"&any="+any,
+			success: function(data){
+				$('#calendari').html(data);
+				$(".current-month").html(monthNames[mes-1]);
+				midaCalendari(any,mes);
+			}
+		});
+		
+		$("#calendari").fadeIn("slow");
 	}
 
 	/* pàgina projectes */
@@ -32,6 +78,33 @@ $(document).ready(function() {
 		  }
 		});
 		e.preventDefault();
+	});
+	
+
+	
+	$( ".llistaitems.tasques li a" ).draggable({ revert: true });
+	$("#sidebar-llistaprojectes li").droppable({
+		activeClass: "ui-state-hover",
+		hoverClass: "ui-state-active",
+		tolerance: "pointer",
+		drop: function( event, ui ) {
+			var pidtasca = ui.draggable.attr("data-id");
+			var pidprojecte = $(this).find("a").attr("data-id");
+			var nomprojecte = $(this).find("a").text();
+			//alert("Afegirem la tasca "+pidtasca+" al projecte "+pidprojecte);
+			
+			var data = 'pid_tasca='+pidtasca+'&pid_projecte='+pidprojecte;
+
+			$.ajax({
+				type: 'POST',
+				url: '/ajax/assignarProjecte.php',
+				data: data,
+				success: function(data){
+					ui.draggable.find(".projecte").html(nomprojecte);
+				}
+			});
+			
+		}
 	});
 	
 	$(".nouprojecte-tancar").live("click", function(e) {
@@ -113,14 +186,24 @@ $(document).ready(function() {
 		return true;
 	});
 
-})
+});
 
-function midaCalendari() {
+function getWeekOfMonth(any,mes) {
+	var firstOfMonth = new Date(any, mes-1, 0);
+	var lastOfMonth = new Date(any, mes, 0);
+	
+	var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+	//alert(""+firstOfMonth.getDay() +" "+ lastOfMonth.getDate()+" "+Math.ceil( used / 7));
+	return Math.ceil( used / 7);
+}
+
+function midaCalendari(any,mes) {
 	var h = $(window).height();
 	var topbar = 40;
 	var dies = 22;
 	var padding = 10;
-	var files = 6;
+	var files = getWeekOfMonth(any, mes);
+	//console.log(files);
 	var borders = 7;
 	
 	var midaFila = Math.round(((h-topbar-dies-borders)/files)-2*padding)+"px";
